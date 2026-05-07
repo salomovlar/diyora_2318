@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakinat - Sehrli Kitoblar Olami</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="butterflies-container" id="butterfliesContainer"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>📚 Sakinat</h1>
+                <p class="tagline">Sehrli kitoblar olami</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}" class="active">Bosh sahifa</a></li>
+                <li><a href="{% url 'katalog' %}">Katalog</a></li>
+                <li><a href="{% url 'onlayn_kitoblar' %}">Onlayn kitoblar</a></li>
+                <li><a href="{% url 'buyurtma' %}">Buyurtma berish</a></li>
+                <li><a href="{% url 'biz_haqimizda' %}">Biz haqimizda</a></li>
+                <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span>🧺</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="magic-sparkles"></div>
+        <div class="hero-content">
+            <h2 class="fairy-title">✨ Xush kelibsiz, sevgi o'quvchisi! ✨</h2>
+            <p class="fairy-text">
+                "Sakinat" do'konimizga xush kelibsiz, ey kitobsevar do'stim! 
+                Bu yerda har bir sahifa — bir sehrli olam, har bir so'z — bir sehrli afsun. 
+                Keling, birgalikda sehrli kitoblar dunyosiga sayohat qilamiz...
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'katalog' %}" class="magic-btn">📖 Katalogni ko'rish</a>
+                <a href="{% url 'onlayn_kitoblar' %}" class="magic-btn magic-btn-secondary">💻 Onlayn o'qish</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-section">
+        <h2 class="section-title fairy-title">🌟 Bizning Sehrli Olam 🌟</h2>
+        <div class="stats-grid">
+            <div class="stat-card magic-card">
+                <div class="stat-icon">📚</div>
+                <div class="stat-number" id="bookCount">{{ books|length }}</div>
+                <div class="stat-label">Sehrli kitoblar</div>
+            </div>
+            <div class="stat-card magic-card">
+                <div class="stat-icon">📖</div>
+                <div class="stat-number" id="authorCount">{{ author_count }}</div>
+                <div class="stat-label">Buyuk mualliflar</div>
+            </div>
+            <div class="stat-card magic-card">
+                <div class="stat-icon">🏷️</div>
+                <div class="stat-number" id="categoryCount">{{ category_count }}</div>
+                <div class="stat-label">Kategoriyalar</div>
+            </div>
+            <div class="stat-card magic-card">
+                <div class="stat-icon">💫</div>
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Baxtli mijozlar</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <h2 class="section-title fairy-title">📚 Mashhur Kitoblar</h2>
+        <div style="text-align: center; margin-bottom: 2rem; font-size: 3rem; opacity: 0.6;">📚📖📘📗📙📕</div>
+        <div class="books-grid" id="featuredBooks">
+            {% for book in books %}
+            <div class="book-card fairy-card">
+                <div class="book-image">{{ book.emoji }}</div>
+                <div class="book-info">
+                    <div class="book-title">{{ book.title }}</div>
+                    <div class="book-author">✍️ {{ book.author }}</div>
+                    <div class="book-price">💰 {{ book.price }} so'm</div>
+                    <button class="add-to-cart" onclick="addToCart({{ book.id }})">🧺 Savatga qo'shish</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center" style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'katalog' %}" class="magic-btn">Barcha kitoblarni ko'rish →</a>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🧺 Sehrli Savat</h3>
+            <button onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <p>Jami: <span id="cartTotal">0</span> so'm</p>
+            <a href="{% url 'buyurtma' %}" class="magic-btn">✨ Buyurtma Berish</a>
+        </div>
+    </div>
+
+    <footer class="fairy-footer">
+        <div class="footer-content">
+            <p class="fairy-text">✨ "Sakinat" — har bir sahifada bir sehr bor ✨</p>
+            <p>&copy; 2024 Sakinat. Barcha huquqlar sehrli tarzda himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+    let books = [
+        {% for book in books %}
+        {
+            id: {{ book.id }},
+            title: "{{ book.title }}",
+            author: "{{ book.author }}",
+            price: {{ book.price }},
+            category: "{{ book.category }}",
+            emoji: "{{ book.emoji }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    </script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

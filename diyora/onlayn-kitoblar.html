@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onlayn kitoblar - Sakinat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="butterflies-container" id="butterfliesContainer"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>📚 Sakinat</h1>
+                <p class="tagline">Sehrli kitoblar olami</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="katalog.html">Katalog</a></li>
+                <li><a href="onlayn-kitoblar.html" class="active">Onlayn kitoblar</a></li>
+                <li><a href="buyurtma.html">Buyurtma berish</a></li>
+                <li><a href="biz-haqimizda.html">Biz haqimizda</a></li>
+                <li><a href="aloqa.html">Aloqa</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span>🧺</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h2 class="fairy-title">💻 Onlayn Kitoblar</h2>
+            <p class="fairy-text">Elektron kitoblarni to'g'ridan-to'g'ri o'qing</p>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="books-grid" id="booksGrid"></div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🧺 Sehrli Savat</h3>
+            <button onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <p>Jami: <span id="cartTotal">0</span> so'm</p>
+            <a href="buyurtma.html" class="magic-btn">✨ Buyurtma Berish</a>
+        </div>
+    </div>
+
+    <footer class="fairy-footer">
+        <div class="footer-content">
+            <p class="fairy-text">✨ "Sakinat" — har bir sahifada bir sehr bor ✨</p>
+            <p>&copy; 2024 Sakinat. Barcha huquqlar sehrli tarzda himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

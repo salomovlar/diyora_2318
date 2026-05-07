@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyurtma berish - Sakinat</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="butterflies-container" id="butterfliesContainer"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>📚 Sakinat</h1>
+                <p class="tagline">Sehrli kitoblar olami</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'katalog' %}">Katalog</a></li>
+                <li><a href="{% url 'onlayn_kitoblar' %}">Onlayn kitoblar</a></li>
+                <li><a href="{% url 'buyurtma' %}" class="active">Buyurtma berish</a></li>
+                <li><a href="{% url 'biz_haqimizda' %}">Biz haqimizda</a></li>
+                <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span>🧺</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h2 class="fairy-title">✨ Buyurtma Berish</h2>
+            <p class="fairy-text">Sehrli kitoblaringizni buyurtma qiling</p>
+        </div>
+    </section>
+
+    <section class="catalog-section" style="max-width: 600px; margin: 2rem auto;">
+        <form method="POST" style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            {% csrf_token %}
+            <div style="margin-bottom: 1rem;">
+                <label>Ismingiz:</label><br>
+                <input type="text" name="name" required style="width: 100%; padding: 0.5rem; border-radius: 10px; border: 1px solid #ddd;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>Telefon:</label><br>
+                <input type="tel" name="phone" required style="width: 100%; padding: 0.5rem; border-radius: 10px; border: 1px solid #ddd;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>Manzil:</label><br>
+                <textarea name="address" required style="width: 100%; padding: 0.5rem; border-radius: 10px; border: 1px solid #ddd;"></textarea>
+            </div>
+            <button type="submit" class="magic-btn" style="width: 100%;">✨ Buyurtma berish</button>
+        </form>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🧺 Sehrli Savat</h3>
+            <button onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <p>Jami: <span id="cartTotal">0</span> so'm</p>
+            <a href="{% url 'buyurtma' %}" class="magic-btn">✨ Buyurtma Berish</a>
+        </div>
+    </div>
+
+    <footer class="fairy-footer">
+        <div class="footer-content">
+            <p class="fairy-text">✨ "Sakinat" — har bir sahifada bir sehr bor ✨</p>
+            <p>&copy; 2024 Sakinat. Barcha huquqlar sehrli tarzda himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onlayn kitoblar - Sakinat</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="butterflies-container" id="butterfliesContainer"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>📚 Sakinat</h1>
+                <p class="tagline">Sehrli kitoblar olami</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'katalog' %}">Katalog</a></li>
+                <li><a href="{% url 'onlayn_kitoblar' %}" class="active">Onlayn kitoblar</a></li>
+                <li><a href="{% url 'buyurtma' %}">Buyurtma berish</a></li>
+                <li><a href="{% url 'biz_haqimizda' %}">Biz haqimizda</a></li>
+                <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span>🧺</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h2 class="fairy-title">💻 Onlayn Kitoblar</h2>
+            <p class="fairy-text">Elektron kitoblarni to'g'ridan-to'g'ri o'qing</p>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="books-grid" id="booksGrid">
+            {% for book in books %}
+            <div class="book-card fairy-card">
+                <div class="book-image">{{ book.emoji }}</div>
+                <div class="book-info">
+                    <div class="book-title">{{ book.title }}</div>
+                    <div class="book-author">✍️ {{ book.author }}</div>
+                    <div class="book-price">💰 {{ book.price }} so'm</div>
+                    <button class="add-to-cart" onclick="addToCart({{ book.id }})">🧺 Savatga qo'shish</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🧺 Sehrli Savat</h3>
+            <button onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <p>Jami: <span id="cartTotal">0</span> so'm</p>
+            <a href="{% url 'buyurtma' %}" class="magic-btn">✨ Buyurtma Berish</a>
+        </div>
+    </div>
+
+    <footer class="fairy-footer">
+        <div class="footer-content">
+            <p class="fairy-text">✨ "Sakinat" — har bir sahifada bir sehr bor ✨</p>
+            <p>&copy; 2024 Sakinat. Barcha huquqlar sehrli tarzda himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+    let books = [
+        {% for book in books %}
+        {
+            id: {{ book.id }},
+            title: "{{ book.title }}",
+            author: "{{ book.author }}",
+            price: {{ book.price }},
+            category: "{{ book.category }}",
+            emoji: "{{ book.emoji }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    </script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

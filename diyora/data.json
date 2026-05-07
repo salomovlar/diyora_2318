@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "title": "O'tkan kunlar",
+        "author": "Abdulla Qodiriy",
+        "price": 45000,
+        "category": "badiiy",
+        "emoji": "📖"
+    },
+    {
+        "id": 2,
+        "title": "Mehrobdan chayon",
+        "author": "Abdulla Qodiriy",
+        "price": 50000,
+        "category": "badiiy",
+        "emoji": "📚"
+    },
+    {
+        "id": 3,
+        "title": "Kecha va kunduz",
+        "author": "Cho'lpon",
+        "price": 55000,
+        "category": "badiiy",
+        "emoji": "📘"
+    },
+    {
+        "id": 4,
+        "title": "Yulduzli tunlar",
+        "author": "Pirimqul Qodirov",
+        "price": 48000,
+        "category": "badiiy",
+        "emoji": "⭐"
+    },
+    {
+        "id": 5,
+        "title": "Fizika asoslari",
+        "author": "A. Einstein",
+        "price": 80000,
+        "category": "ilmiy",
+        "emoji": "🔬"
+    },
+    {
+        "id": 6,
+        "title": "Matematika qo'llanmasi",
+        "author": "N. Yusupov",
+        "price": 65000,
+        "category": "ilmiy",
+        "emoji": "📐"
+    },
+    {
+        "id": 7,
+        "title": "O'zbekiston tarixi",
+        "author": "B. Ahmedov",
+        "price": 70000,
+        "category": "tarix",
+        "emoji": "🏛️"
+    },
+    {
+        "id": 8,
+        "title": "Samarkand tarixi",
+        "author": "A. Mukhtorov",
+        "price": 60000,
+        "category": "tarix",
+        "emoji": "🕌"
+    },
+    {
+        "id": 9,
+        "title": "Bolalar ertaklari",
+        "author": "Xalq og'zaki ijodi",
+        "price": 35000,
+        "category": "bolalar",
+        "emoji": "🧸"
+    },
+    {
+        "id": 10,
+        "title": "Momo Ravshan",
+        "author": "Xalq ertagi",
+        "price": 30000,
+        "category": "bolalar",
+        "emoji": "🦊"
+    },
+    {
+        "id": 11,
+        "title": "Zumrad va Qimmat",
+        "author": "Xalq ertagi",
+        "price": 28000,
+        "category": "bolalar",
+        "emoji": "💎"
+    },
+    {
+        "id": 12,
+        "title": "Shum bola",
+        "author": "G'afur G'ulom",
+        "price": 40000,
+        "category": "bolalar",
+        "emoji": "👦"
+    }
+]
